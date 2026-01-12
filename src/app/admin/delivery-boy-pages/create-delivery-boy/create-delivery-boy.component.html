@@ -1,0 +1,238 @@
+<div class="container mt-2 mb-3">
+    <!-- <h2 class="text-center text-orange">Owner Information</h2> -->
+    <form [formGroup]="form" (ngSubmit)="submitForm()">
+      
+      <!-- Step 1: Personal Details -->
+      <div *ngIf="step === 1" formGroupName="personalDetails">
+        <h4>Personal Details</h4>
+        <div class="row">
+          <div class="col-md-6">
+            <label>First Name</label>
+            <input type="text" class="form-control" formControlName="firstName" placeholder="Enter first name" />
+            <div *ngIf="form.get('personalDetails.firstName')?.invalid && form.get('personalDetails.firstName')?.touched" class="text-danger">
+              First Name is required.
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label>Last Name</label>
+            <input type="text" class="form-control" formControlName="lastName" placeholder="Enter last name" />
+            <div *ngIf="form.get('personalDetails.lastName')?.invalid && form.get('personalDetails.lastName')?.touched" class="text-danger">
+              Last Name is required.
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label>Gender</label>
+            <select class="form-control" formControlName="gender">
+              <option value="" disabled>Select gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+            <div *ngIf="form.get('personalDetails.gender')?.invalid && form.get('personalDetails.gender')?.touched" class="text-danger">
+              Gender is required.
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label>Email</label>
+            <input type="email" class="form-control" formControlName="email" placeholder="Enter email" />
+            <div *ngIf="form.get('personalDetails.email')?.invalid && form.get('personalDetails.email')?.touched" class="text-danger">
+              Valid Email is required.
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label>Mobile Number</label>
+            <input type="text" class="form-control" formControlName="mobileNumber" placeholder="Enter mobile number" />
+            <div *ngIf="form.get('personalDetails.mobileNumber')?.invalid && form.get('personalDetails.mobileNumber')?.touched" class="text-danger">
+              Mobile Number is required and must be 10 digits.
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label>Password</label>
+            <input type="password" class="form-control" formControlName="password" placeholder="Enter password" />
+            <div *ngIf="form.get('personalDetails.password')?.invalid && form.get('personalDetails.password')?.touched" class="text-danger">
+              Password must be at least 8 characters.
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label>Profile Photo</label>
+            <input type="file" class="form-control" (change)="onFileSelect($event, 'profilePhoto')" />
+          </div>
+        </div>
+        <button type="button" class="btn btn-primary mt-3" (click)="nextStep()" [disabled]="!isCurrentStepValid()">Next</button>
+      </div>
+      
+      <!-- Step 2: Address Details -->
+      <div *ngIf="step === 2" formGroupName="addressDetails">
+        <h4>Address Details</h4>
+        <div class="row">
+          <div class="col-md-6">
+            <label>Address</label>
+            <input type="text" class="form-control" formControlName="address" placeholder="Enter address" />
+            <div *ngIf="form.get('addressDetails.address')?.invalid && form.get('addressDetails.address')?.touched" class="text-danger">
+              Address is required.
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label>Bank Name</label>
+            <input type="text" class="form-control" formControlName="bankName" placeholder="Enter bank name" />
+            <div *ngIf="form.get('addressDetails.bankName')?.invalid && form.get('addressDetails.bankName')?.touched" class="text-danger">
+              Bank Name is required.
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label>Bank Account Number</label>
+            <input type="text" class="form-control" formControlName="bankAccountNumber" placeholder="Enter account number" />
+            <div *ngIf="form.get('addressDetails.bankAccountNumber')?.invalid && form.get('addressDetails.bankAccountNumber')?.touched" class="text-danger">
+              Bank Account Number must be between 10 and 16 digits.
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label>Bank IFSC Code</label>
+            <input type="text" class="form-control" formControlName="bank_Ifsc_Code" placeholder="Enter IFSC code" />
+            <div *ngIf="form.get('addressDetails.bank_Ifsc_Code')?.invalid && form.get('addressDetails.bank_Ifsc_Code')?.touched" class="text-danger">
+              IFSC Code is required.
+            </div>
+          </div>
+        </div>
+        <button type="button" class="btn btn-secondary mt-3" (click)="prevStep()">Previous</button>
+        <button type="button" class="btn btn-primary mt-3" (click)="nextStep()" [disabled]="!isCurrentStepValid()">Next</button>
+      </div>
+  
+      <!-- Step 3: ID Details -->
+      <div *ngIf="step === 3" formGroupName="idDetails">
+        <h4>ID Details</h4>
+        <div class="row">
+          <div class="col-md-6">
+            <label>PAN Number</label>
+            <input type="text" class="form-control" formControlName="pan_No" placeholder="Enter PAN number" />
+            <div *ngIf="form.get('idDetails.pan_No')?.invalid && form.get('idDetails.pan_No')?.touched" class="text-danger">
+              PAN Number is required.
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label>PAN Image</label>
+            <input type="file" class="form-control" (change)="onFileSelect($event, 'pan_Image')" />
+          </div>
+          <div class="col-md-6">
+            <label>Aadhar Number</label>
+            <input type="text" class="form-control" formControlName="aadhar_No" placeholder="Enter Aadhar number" />
+            <div *ngIf="form.get('idDetails.aadhar_No')?.invalid && form.get('idDetails.aadhar_No')?.touched" class="text-danger">
+              Aadhar Number is required.
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label>Aadhar Image</label>
+            <input type="file" class="form-control" (change)="onFileSelect($event, 'aadhar_Image')" />
+          </div>
+        </div>
+        <button type="button" class="btn btn-secondary mt-3" (click)="prevStep()">Previous</button>
+        <button type="button" class="btn btn-primary mt-3" (click)="nextStep()" [disabled]="!isCurrentStepValid()">Next</button>
+      </div>
+
+      <!-- Step 4: Vehicle Details -->
+<div *ngIf="step === 4" formGroupName="vehicleDetails">
+    <h4>Vehicle Details</h4>
+    <div class="row">
+      <div class="col-md-6">
+        <label>Vehicle Number</label>
+        <input type="text" class="form-control" formControlName="vehicleNumber" placeholder="Enter vehicle number" />
+        <div *ngIf="form.get('vehicleDetails.vehicleNumber')?.invalid && form.get('vehicleDetails.vehicleNumber')?.touched" class="text-danger">
+          Vehicle Number is required.
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label>Vehicle Type</label>
+        <input type="text" class="form-control" formControlName="vehicleType" placeholder="Enter vehicle type" />
+        <div *ngIf="form.get('vehicleDetails.vehicleType')?.invalid && form.get('vehicleDetails.vehicleType')?.touched" class="text-danger">
+          Vehicle Type is required.
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label>Insurance Valid Date</label>
+        <input type="date" class="form-control" formControlName="insuranceValidDate" />
+        <div *ngIf="form.get('vehicleDetails.insuranceValidDate')?.invalid && form.get('vehicleDetails.insuranceValidDate')?.touched" class="text-danger">
+          Insurance Valid Date is required.
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label>Driving License Number</label>
+        <input type="text" class="form-control" formControlName="drivingLicenseNumber" placeholder="Enter driving license number" />
+        <div *ngIf="form.get('vehicleDetails.drivingLicenseNumber')?.invalid && form.get('vehicleDetails.drivingLicenseNumber')?.touched" class="text-danger">
+          Driving License Number is required.
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label>Driving License Expire Date</label>
+        <input type="date" class="form-control" formControlName="drivingLicenseExpireDate" />
+        <div *ngIf="form.get('vehicleDetails.drivingLicenseExpireDate')?.invalid && form.get('vehicleDetails.drivingLicenseExpireDate')?.touched" class="text-danger">
+          Driving License Expire Date is required.
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label>RC Smart Card</label>
+        <input type="file" class="form-control" (change)="onFileSelect($event, 'rcSmartCard')" />
+      </div>
+      <div class="col-md-6">
+        <label>Insurance Document</label>
+        <input type="file" class="form-control" (change)="onFileSelect($event, 'insurance')" />
+      </div>
+      <div class="col-md-6">
+        <label>Driving License Image</label>
+        <input type="file" class="form-control" (change)="onFileSelect($event, 'drivingLicenseImage')" />
+      </div>
+      <div class="col-md-6">
+        <label>PUC Image</label>
+        <input type="file" class="form-control" (change)="onFileSelect($event, 'PUC_Image')" />
+      </div>
+    </div>
+    <button type="button" class="btn btn-secondary mt-3" (click)="prevStep()">Previous</button>
+    <button type="button" class="btn btn-primary mt-3" (click)="nextStep()" [disabled]="!isCurrentStepValid()">Next</button>
+  </div>
+  
+  
+      <!-- Additional Steps: Vehicle Details, Additional Info, Submit Button -->
+  <!-- Step 5: Additional Information -->
+<div *ngIf="step === 5" formGroupName="additionalInfo">
+    <h4>Additional Information</h4>
+    <div class="row">
+      <div class="col-md-6">
+        <label>Status</label>
+        <select class="form-control" formControlName="status">
+          <option [ngValue]="true">Active</option>
+          <option [ngValue]="false">Inactive</option>
+        </select>
+        <div *ngIf="form.get('additionalInfo.status')?.invalid && form.get('additionalInfo.status')?.touched" class="text-danger">
+          Status is required.
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label>Police Verification</label>
+        <input type="text" class="form-control" formControlName="police_verification" placeholder="Enter verification status" />
+        <div *ngIf="form.get('additionalInfo.police_verification')?.invalid && form.get('additionalInfo.police_verification')?.touched" class="text-danger">
+          Police Verification is required.
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label>Restaurant ID</label>
+        <input type="number" class="form-control" formControlName="restaurantId" placeholder="Enter restaurant ID" />
+        <div *ngIf="form.get('additionalInfo.restaurantId')?.invalid && form.get('additionalInfo.restaurantId')?.touched" class="text-danger">
+          Restaurant ID is required.
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label>Is Deleted</label>
+        <select class="form-control" formControlName="isDeleted">
+          <option [ngValue]="true">Yes</option>
+          <option [ngValue]="false">No</option>
+        </select>
+        <div *ngIf="form.get('additionalInfo.isDeleted')?.invalid && form.get('additionalInfo.isDeleted')?.touched" class="text-danger">
+          Is Deleted is required.
+        </div>
+      </div>
+    </div>
+    <button type="button" class="btn btn-secondary mt-3" (click)="prevStep()">Previous</button>
+    <button type="submit" class="btn btn-success mt-3">Submit</button>
+  </div>
+  
+    </form>
+  </div>
+  

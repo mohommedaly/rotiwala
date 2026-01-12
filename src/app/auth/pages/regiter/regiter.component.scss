@@ -1,0 +1,64 @@
+
+
+section {
+    background: #ffffff url(../../../../assets/wave-haikei.png) center center/cover no-repeat;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  
+  .logo {
+    font-size: 2.5rem;
+    font-weight: 700;
+  }
+  
+  .card {
+    border-radius: 10px;
+    width: 100%;
+    max-width: 450px;
+  }
+  
+  .btn {
+    background-color: #ff6600;
+  }
+  
+  .btn:hover {
+    background-color: #e65c00;
+  }
+  
+  /* Media Queries for Responsiveness */
+  @media (max-width: 768px) {
+    .logo {
+      font-size: 2rem;
+    }
+  
+    .card {
+      padding: 20px;
+    }
+  
+    h3 {
+      font-size: 1.5rem;
+    }
+  
+    label {
+      font-size: 0.9rem;
+    }
+  
+    .form-group {
+      margin-bottom: 1rem;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .logo {
+      font-size: 1.8rem;
+    }
+  
+    h3 {
+      font-size: 1.3rem;
+    }
+  
+    .form-group {
+      margin-bottom: 0.8rem;
+    }
+  }
+  

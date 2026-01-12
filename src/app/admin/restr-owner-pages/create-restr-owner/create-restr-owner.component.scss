@@ -1,0 +1,36 @@
+.text-orange {
+    color: #f39c12;
+  }
+  
+  .border-orange {
+    border: 1px solid #f39c12;
+    border-radius: 8px;
+  }
+  
+  .btn-orange {
+    background-color: #f39c12;
+    color: white;
+    border: none;
+  }
+  
+  .btn-orange:hover {
+    background-color: #e67e22;
+  }
+  
+  .form-label {
+    font-weight: bold;
+  }
+  
+
+  input:focus, textarea:focus, select:focus {
+    outline: none !important;
+    border-color: #f97821 !important;
+    box-shadow: 0 0 5px #f97821 !important;
+}
+.custom-radio:checked {
+    border-color:  #f97821 !important; /* Outline color when selected */
+    background-color: #f97821 !important; /* Background color when selected */
+  }
+  .custom-radio {
+    accent-color: #f97821 !important; /* Sets the color when selected */
+  }

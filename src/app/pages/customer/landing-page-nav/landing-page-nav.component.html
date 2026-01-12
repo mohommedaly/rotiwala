@@ -1,0 +1,70 @@
+<nav class="navbar navbar-expand-lg navbar-light "
+  style="background: linear-gradient(100deg, #FCAD19 0%, #FC8019 100%);">
+  <div class="container-fluid">
+    <a class="navbar-brand font-weight-bold  text-white" href="#">Logo</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="d-flex flex-lg-row flex-column w-100 justify-content-end align-items-lg-center">
+
+        <div class="d-flex flex-row flex-lg-row justify-content-center align-items-center mt-2 mt-lg-0 me-5">
+       
+          <a class="position-relative ms-3 me-4" style="height: 30px !important;" (click)="toggleUserList()">
+            <i class="bi bi-bag-fill text-white bis"></i>
+            <span class="badge rounded-circle bg-danger position-absolute top-0 start-100 translate-middle"
+              *ngIf="data?.length > 0">
+              {{ data.length }}
+            </span>
+          </a>
+          <button 
+          *ngIf="isLogin" 
+          class="btn btn-warning text-light rounded sign" 
+          (click)="handleOrderButtonClick()">
+          Orders
+          
+        </button>
+            <button 
+            class="btn btn-warning text-light rounded sign" 
+            (click)="handleButtonClick()">
+            {{ isLogin ? "SignOut" : "SignIn" }}
+          </button>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="d-flex justify-content-center align-items-center vh-100" *ngIf="showUserList">
+  <div class="card user-list-card">
+    <div class="card-header d-flex justify-content-between">
+      <h5 class="mb-0" style="color: #FC8019;">Cart List</h5>
+      <h1 class="close-button" (click)="toggleUserList()">X</h1>
+    </div>
+    <div class="card-body">
+      <ul class="user-list list-unstyled">
+        <li *ngFor="let d of data" class="d-flex align-items-center user-list-item" (click)="navigateToUpdate(d?.id)">
+          <img [src]="envUrl + '/api/files/' + d.orderItemResponse.productImage" alt="Product Image"
+            class="product-image" />
+          <div class="product-details">
+            <p class="product-name mb-1">{{ d.orderItemResponse.productName }}</p>
+            <p class="product-price text-muted">
+              {{ d.orderItemResponse.productPrice | currency: "INR" }}
+            </p>
+
+          </div>
+          <div class="ms-5">
+
+            <button class="btn btn-sm  text-white " style="background-color: #FC8019;" (click)="navigateToDelete(d.cardId)">Delete</button>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="card-header d-flex justify-content-center" (click)="navigateToOrder(id)">
+      <h5 class="mb-0 btn " style="background-color: #FC8019; color: white;">Order</h5>
+      
+    </div>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<div class="container my-4">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card shadow-lg">
+          <div class="card-header text-center  text-white  bg-header">
+            <h4>Customer Details</h4>
+          </div>
+          <div class="card-footer text-end mt-1">
+            <button class="btn btn-sm text-center mx-2 backBtn"  routerLink="/admin/all-customer" >Back</button>
+            <button class="btn  btn-sm mx-2 editbtn   justify-item-center" >Edit</button>
+            <!-- <button class="btn btn-outline-danger mx-2" [ngClass]="{'disabled': customerData.isDeleted}">Delete</button> -->
+          </div>
+          <div class="card-body p-4">
+            <div class="text-center mb-4">
+              <img [src]="envUrl+customerData?.profilePicture" alt="Profile Picture" class="rounded-circle" style="width: 120px; height: 120px;" />
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <strong>Customer ID:</strong> {{ customerData?.id }}
+              </li>
+              <li class="list-group-item">
+                <strong>Name:</strong> {{ customerData?.name }}
+              </li>
+              <li class="list-group-item">
+                <strong>Email:</strong> {{ customerData?.email }}
+              </li>
+              <li class="list-group-item">
+                <strong>Phone Number:</strong> {{ customerData?.phoneNumber }}
+              </li>
+              <li class="list-group-item">
+                <strong>Address:</strong> {{ customerData?.address }}
+              </li>
+          
+            </ul>
+          </div>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+  

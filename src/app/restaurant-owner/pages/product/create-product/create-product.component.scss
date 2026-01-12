@@ -1,0 +1,15 @@
+input:focus, select:focus, textarea:focus {
+    outline: none !important;
+    border-color: #f97821 !important;
+    box-shadow: 0 0 5px #f97821 !important;
+  }
+  
+  .custom-radio:checked {
+    border-color: #f97821 !important;
+    background-color: #f97821 !important;
+  }
+  
+  .custom-radio {
+    accent-color: #f97821 !important;
+  }
+  

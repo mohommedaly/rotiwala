@@ -1,0 +1,127 @@
+<div class="d-flex justify-content-end ms-5 mb-3"  style="margin-right: 80px !important;"  routerLink="/admin/restaurant">
+  <button class="btn btn-sm text-white"  style="background-color: #f97821;">back</button>
+</div>
+
+   <div class="container mt-5 p-4 mb-2" style="max-width: 600px; border: 1px solid #f97821; border-radius: 8px;">
+    <h3 style="color: #f97821;">Create New Restaurant</h3>
+    <form [formGroup]="restaurantForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="restaurantName" class="form-label">Restaurant Name</label>
+          <input type="text" id="restaurantName" formControlName="restaurantName" class="form-control" />
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="restaurantMobileNumber" class="form-label">Mobile Number</label>
+          <input type="text" maxlength="10" id="restaurantMobileNumber" formControlName="restaurantMobileNumber" class="form-control" />
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="restaurantAddress" class="form-label">Address</label>
+          <input type="text" id="restaurantAddress" formControlName="restaurantAddress" class="form-control" />
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="location" class="form-label">Location</label>
+          <input type="text" id="location" formControlName="location" class="form-control" />
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="restaurant_Type" class="form-label">Restaurant Type</label>
+          <input type="text" id="restaurant_Type" formControlName="restaurant_Type" class="form-control" />
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="Open_Time" class="form-label">Open Time</label>
+          <input type="time" id="Open_Time" formControlName="Open_Time" class="form-control" />
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="Close_Time" class="form-label">Close Time</label>
+          <input type="time" id="Close_Time" formControlName="Close_Time" class="form-control" />
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="Open_Days" class="form-label">Open Days</label>
+          <input type="text" id="Open_Days" formControlName="Open_Days" class="form-control" />
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="Close_days" class="form-label">Close Days</label>
+          <input type="text" id="Close_days" formControlName="Close_days" class="form-control" />
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="Gomasta_No" class="form-label">Gomasta Number</label>
+          <input type="text" id="Gomasta_No" formControlName="Gomasta_No" class="form-control" />
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="GstNumber" class="form-label">GST Number</label>
+          <input type="number" id="GstNumber" formControlName="GstNumber" class="form-control" />
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="fssaiNumber" class="form-label">FSSAI Number</label>
+          <input type="number" id="fssaiNumber" formControlName="fssaiNumber" class="form-control" />
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="resturantOwner" class="form-label">Restaurant Owner</label>
+        <select id="resturantOwner" formControlName="resturantOwner" class="form-control">
+          <option value="" disabled selected>Select an owner</option>
+          <option *ngFor="let data of resOwner" [value]="data?.id">{{data?.id}} {{ data?.firstName }} {{ data?.lastName }}</option>
+        </select>
+      </div>
+      
+      
+      <!-- File Uploads - Full Width on All Screen Sizes -->
+      <div class="mb-3">
+        <label for="GstDocumentImage" class="form-label">GST Document</label>
+        <input type="file" id="GstDocumentImage" (change)="onFileChange($event, 'GstDocumentImage')" class="form-control" />
+        <div *ngIf="gstPreview" class="mt-2">
+         
+          <img [src]="gstPreview" alt="GST Document Preview" class="img-thumbnail" style="max-width: 100px;" />
+        </div>
+      </div>
+  
+      <div class="mb-3">
+        <label for="FssaiDocumentImage" class="form-label">FSSAI Document</label>
+        <input type="file" id="FssaiDocumentImage" (change)="onFileChange($event, 'FssaiDocumentImage')" class="form-control" />
+        <div *ngIf="fssaiPreview" class="mt-2">
+       
+          <img [src]="fssaiPreview" alt="FSSAI Document Preview" class="img-thumbnail" style="max-width: 100px;"/>
+        </div>
+      </div>
+  
+      <div class="mb-3">
+        <label for="restaurantPhoto" class="form-label">Restaurant Photo</label>
+        <input type="file" id="restaurantPhoto" (change)="onFileChange($event, 'restaurantPhoto')" class="form-control" />
+        <div *ngIf="restaurantPhotoPreview" class="mt-2">
+        
+          <img [src]="restaurantPhotoPreview" alt="Restaurant Photo Preview" class="img-thumbnail" style="max-width: 100px;" />
+        </div>
+      </div>
+  
+      <!-- <button type="submit" class="btn" [ngStyle]="{ 'background-color': '#f97821', color: '#fff' }" [disabled]="restaurantForm.invalid">
+
+        Create Restaurant
+      </button> -->
+      <button
+type="submit"
+class="w-100 btn btn-block text-white mt-4"
+[disabled]="restaurantForm.invalid || isLoading"
+style="background-color: #ff6600; font-family: 'Poppins', sans-serif;"
+>
+<span *ngIf="!isLoading">Create Restaurant</span>
+<span *ngIf="isLoading">
+  <i class="fa fa-spinner fa-spin"></i> Create Restaurant...
+</span>
+</button>
+    </form>
+  </div>
+  

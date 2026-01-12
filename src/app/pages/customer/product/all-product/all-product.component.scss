@@ -1,0 +1,140 @@
+.image-container {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .image-container img {
+    width: 100%;
+    height: auto;
+  }
+
+  .overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: right;
+  }
+
+  .overlay-text h2 {
+    font-size: 2rem;
+    margin: 0;
+  }
+
+  .overlay-text h3 {
+    font-size: 1.5rem;
+    margin: 0;
+    font-weight: bold;
+  }
+
+  .overlay-text p {
+    font-size: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .btn-shop-now {
+    background-color: #ff7e22;
+    color: white;
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-weight: bold;
+  }
+
+  .btn-shop-now:hover {
+    color: white;
+    background-color: #ff9f4b;
+  }
+
+.fa-heart{
+    color: #ff9f4b;
+}
+.fa-shopping-cart{
+    color: #ff9f4b;
+}
+  
+
+  .card {
+    position: relative;
+    // border: none;
+    overflow: hidden;
+    transition: transform 0.3s;
+    height: 400px; /* Adjusted height */
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+  }
+
+  .card img {
+    border-radius: 10px;
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .overlay-icons {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: none;
+    flex-direction: column;
+  }
+
+  .card:hover .overlay-icons {
+    display: flex;
+  }
+
+  .sale-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #ff7e22;
+    color: white;
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    border-radius: 5px;
+  }
+
+  .product-info {
+    padding: 15px;
+    text-align: center;
+  }
+
+  .product-info h5 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: #ff7e22;
+  }
+
+  .product-info .price {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+  }
+
+  .product-info .rating {
+    color: #ffa500;
+  }
+
+  .lock-icon {
+    margin-top: 10px;
+    color: #ffa500;
+    font-size: 1.5rem;
+  }
+
+  .view-all {
+    text-align: right;
+    margin-bottom: 20px;
+  }
+
+  .view-all a {
+    color: #ff7e22;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .view-all a:hover {
+    text-decoration: underline;
+  }

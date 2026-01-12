@@ -1,0 +1,131 @@
+.bis {
+    font-size: 1.5rem; /* Yeh value adjust kar sakte hain apne requirement ke according */
+    color: white; /* Icon ka color bhi yahin se set kar sakte hain */
+}
+.form-control:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    color: black;
+}
+
+.form-control {
+    width: 300px;
+    background-color: #FEE6D8;
+}
+
+.btn-outline-light {
+    background-color: #FEE6D8;
+    border: none;
+    color: #f15e28;
+}
+
+.btn-warning {
+    background-color: #f15e28;
+}
+
+.btn-light {
+    background-color: #f15e28;
+    border: none;
+}
+
+@media (max-width: 768px) {
+    .form-control {
+        width: 100%;
+    }
+}
+
+@media (max-width: 465px) and (min-width: 344px) {
+    .sign {
+      width: 125px;
+    }
+  }
+  
+
+
+  .badge {
+    font-size: 0.75rem; /* Adjust the size of the badge */
+    height: 20px;
+    width: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0; /* No padding for a perfect circle */
+    border: 2px solid white; /* Optional: Add a white border to make it stand out */
+  }
+  
+
+
+
+
+
+  /* Center the card in the viewport */
+.d-flex.vh-100 {
+    background-color: #f8f9fa;
+  }
+  
+  /* Card styling */
+  .user-list-card {
+    width: 350px;
+    border: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+  
+  /* Close button styling */
+  .close-button {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #FC8019;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  
+  .close-button:hover {
+    color: #FC8019;
+  }
+  
+  /* Product list styling */
+  .user-list-item {
+    padding: 10px;
+    border-bottom: 1px solid #e9ecef;
+    transition: background-color 0.2s;
+    cursor: pointer;
+  }
+  
+  .user-list-item:last-child {
+    border-bottom: none;
+  }
+  
+  .user-list-item:hover {
+    background-color: #f1f1f1;
+  }
+  
+  /* Product image styling */
+  .product-image {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+  
+  /* Product details styling */
+  .product-details {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .product-name {
+    font-size: 0.9rem;
+    font-weight: bold;
+  }
+  
+  .product-price {
+    font-size: 0.8rem;
+  }
+  

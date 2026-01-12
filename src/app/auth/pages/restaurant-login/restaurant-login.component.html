@@ -1,0 +1,82 @@
+
+
+    <section class="d-flex justify-content-center align-items-center min-vh-100 pt-5">
+        <div class="container-fluid">
+          <div class="row justify-content-center mb-5">
+            <div class="col-12 ">
+              <h1 class="logo text-white" style="font-family: 'Poppins', sans-serif;">LOGO/tite</h1>
+            </div>
+          </div>
+      
+          <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4">
+              <div class="card p-4 shadow-lg">
+                <div class="card-body">
+                  <h3 class="text-center" style="font-family: 'Poppins', sans-serif;">Login</h3>
+      
+                  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                    <!-- Username Field -->
+                    <div class="form-group mt-3">
+                      <label for="username" style="font-family: 'Poppins', sans-serif;">Username</label>
+                      <input type="text" id="username" formControlName="username" class="form-control"
+                        placeholder="Enter your username" [ngClass]="{'is-invalid': isInvalid('username')}">
+                      <div *ngIf="isInvalid('username')" class="invalid-feedback">
+                        {{ getErrorMessage('username') }}
+                      </div>
+                    </div>
+      
+                    <!-- Password Field -->
+                    <div class="form-group mt-2 position-relative">
+                      <label for="password" style="font-family: 'Poppins', sans-serif;">Password</label>
+                      <input [type]="showPassword ? 'text' : 'password'" id="password" formControlName="password" class="form-control"
+                        placeholder="Enter your password" [ngClass]="{'is-invalid': isInvalid('password')}">
+                      <i class="fa" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'" (click)="togglePasswordVisibility()"
+                         style="position: absolute; right: 10px; top: 38px; cursor: pointer; color: #ff6600 !important;"></i>
+                      <div *ngIf="isInvalid('password')" class="invalid-feedback">
+                        {{ getErrorMessage('password') }}
+                      </div>
+                    </div>
+                    
+                    <!-- <div class="form-group mt-2">
+                      <label for="password" style="font-family: 'Poppins', sans-serif;">Password</label>
+                      <input type="password" id="password" formControlName="password" class="form-control"
+                        placeholder="Enter your password" [ngClass]="{'is-invalid': isInvalid('password')}">
+                      <div *ngIf="isInvalid('password')" class="invalid-feedback">
+                        {{ getErrorMessage('password') }}
+                      </div>
+                    </div> -->
+      
+                    <!-- Forgot Password Link -->
+                    <div class="text-right mt-2">
+                      <a routerLink="/auth/forget-password" style="font-family: 'Poppins', sans-serif; color: #ff6600 !important;">Forgot?</a>
+                    </div>
+      
+                    <!-- Submit Button -->
+                    <!-- <button type="submit" class="w-100 btn btn-block text-white mt-4" [disabled]="loginForm.invalid"
+                      style="background-color: #ff6600; font-family: 'Poppins', sans-serif;">Login</button> -->
+                      <!-- Submit Button -->
+<button
+type="submit"
+class="w-100 btn btn-block text-white mt-4"
+[disabled]="loginForm.invalid || isLoading"
+style="background-color: #ff6600; font-family: 'Poppins', sans-serif;"
+>
+<span *ngIf="!isLoading">Login</span>
+<span *ngIf="isLoading">
+  <i class="fa fa-spinner fa-spin"></i> Logging in...
+</span>
+</button>
+
+                    </form>
+      
+                  <!-- Sign Up Link -->
+                  <div class="text-center mt-3" style="font-family: 'Poppins', sans-serif;">
+                    <p>Don't have an account? <a routerLink="/auth/register" style="color: #ff6600 !important;">Sign up</a></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      

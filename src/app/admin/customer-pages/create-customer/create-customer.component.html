@@ -1,0 +1,93 @@
+<div class="d-flex justify-content-end ms-5 mb-3" style="margin-right: 80px !important;"  routerLink="/admin/customer">
+    <button class="btn btn-sm text-white"  style="background-color: #f97821;">back</button>
+</div>
+<div class="container  p-4 mb-3" style="max-width: 600px; border: 1px solid #f97821; border-radius: 8px;">
+
+    <h3 style="color: #f97821;">Create New User</h3>
+    <form [formGroup]="createUserForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" id="name" formControlName="name" class="form-control" />
+        <div *ngIf="createUserForm.get('name')?.invalid && createUserForm.get('name')?.touched" class="text-danger">
+          Name is required and must be at least 3 characters.
+        </div>
+      </div>
+  
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" id="email" formControlName="email" class="form-control" />
+        <div *ngIf="createUserForm.get('email')?.invalid && createUserForm.get('email')?.touched" class="text-danger">
+          A valid email is required.
+        </div>
+      </div>
+  
+      <div class="mb-3">
+        <label for="phoneNumber" class="form-label">Phone Number</label>
+        <input type="text" id="phoneNumber" maxlength="10" minlength="10" formControlName="phoneNumber" class="form-control" />
+        <div *ngIf="createUserForm.get('phoneNumber')?.invalid && createUserForm.get('phoneNumber')?.touched" class="text-danger">
+          Phone number must be valid.
+        </div>
+      </div>
+  
+      <!-- <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" id="password" formControlName="password" class="form-control" />
+        <div *ngIf="createUserForm.get('password')?.invalid && createUserForm.get('password')?.touched" class="text-danger">
+          Password is required and must be at least 6 characters.
+        </div>
+      </div> -->
+  
+      <div class="mb-3">
+        <label for="address" class="form-label">Address</label>
+        <textarea id="address" formControlName="address" class="form-control"></textarea>
+        <div *ngIf="createUserForm.get('address')?.invalid && createUserForm.get('address')?.touched" class="text-danger">
+          Address is required.
+        </div>
+      </div>
+
+      <!-- Gender Field as Radio Buttons -->
+    <div class="mb-3 d-flex ">
+        <label class="form-label">Gender</label>
+        <div class="ms-4">
+          <input type="radio" id="male" formControlName="gender"  class="custom-radio" value="Male" />
+          <label for="male" class="form-label">Male</label>
+        </div>
+        <div class="ms-4">
+          <input type="radio" id="female" class="custom-radio" formControlName="gender" value="Female" />
+          <label for="female" class="form-label">Female</label>
+        </div>
+        <div *ngIf="createUserForm.get('gender')?.invalid && createUserForm.get('gender')?.touched" class="text-danger">
+          Gender is required.
+        </div>
+      </div>
+  
+      <div class="mb-3">
+        <label for="profilePicture" class="form-label">Profile Picture</label>
+        <input type="file" id="profilePicture" (change)="onFileChange($event)" class="form-control" />
+        <div *ngIf="createUserForm.get('profilePicture')?.invalid && createUserForm.get('profilePicture')?.touched" class="text-danger">
+          Profile picture is required.
+        </div>
+      </div>
+  
+      <div *ngIf="profilePicturePreview" class="mb-3">
+        <!-- <label class="form-label">Profile Picture Preview:</label> -->
+        <img [src]="profilePicturePreview" alt="Profile Preview" style="max-width: 100px;  border: 1px solid #ccc;" />
+      </div>
+  
+      <!-- <button type="submit" class="btn" [ngStyle]="{ 'background-color': '#f97821', color: '#fff' }" [disabled]="createUserForm.invalid">
+        Create User
+      </button> -->
+      <button
+      type="submit"
+      class="w-100 btn btn-block text-white mt-4"
+      [disabled]="createUserForm.invalid || isLoading"
+      style="background-color: #ff6600; font-family: 'Poppins', sans-serif;"
+      >
+      <span *ngIf="!isLoading">Create User</span>
+      <span *ngIf="isLoading">
+        <i class="fa fa-spinner fa-spin"></i> Create User...
+      </span>
+      </button>
+    </form>
+  </div>
+  

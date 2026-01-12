@@ -1,0 +1,118 @@
+.card {
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  
+  .card-header {
+    background-color: #ff5722;
+    color: #ffffff;
+  }
+  
+  .profile-pic {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .id-images {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .id-image {
+    text-align: center;
+  }
+  
+  .img-thumbnail {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    margin-top: 5px;
+  }
+  
+  .list-group-item {
+    font-size: 15px;
+    background: #f9f9f9;
+    border: none;
+    padding: 12px 20px;
+  }
+  
+  .bg-header {
+    background-color: #f97821 !important;
+  }
+  
+  .editbtn {
+    border: 1px solid #f97821;
+    background-color: #f97821;
+    color: white;
+  }
+  
+  .editbtn:hover {
+    background-color: white;
+    color: #f97821;
+  }
+  
+  .backBtn {
+    border: 1px solid #f97821;
+    color: #f97821;
+  }
+  
+  .backBtn:hover {
+    background-color: #f97821;
+    color: white;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .profile-pic {
+      width: 100px;
+      height: 100px;
+    }
+    
+    .img-thumbnail {
+      width: 70px;
+      height: 70px;
+    }
+  
+    .list-group-item {
+      font-size: 14px;
+      padding: 10px 15px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .card {
+      margin: 1rem;
+    }
+  
+    .profile-pic {
+      width: 80px;
+      height: 80px;
+    }
+  
+    .card-header {
+      font-size: 16px;
+    }
+  
+    .card-footer {
+      font-size: 12px;
+    }
+  
+    .list-group-item {
+      padding: 8px 12px;
+    }
+  
+    .img-thumbnail {
+      width: 60px;
+      height: 60px;
+    }
+  
+    .id-images {
+      flex-direction: column;
+    }
+  
+    .id-image {
+      margin-bottom: 10px;
+    }
+  }
+  

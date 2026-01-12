@@ -1,0 +1,162 @@
+<div class="d-flex justify-content-end    mb-3" style="margin-right: 85px !important;"  routerLink="/admin/order">
+    <button class="btn btn-sm text-white"  style="background-color: #f97821;">back</button>
+  </div>
+  
+
+<div class="container mt-2 " style="border:solid 1px #f97821;">
+    <form class="mt-2" [formGroup]="createProductForm" (ngSubmit)="onSubmit()">
+      <!-- Restaurant Dropdown -->
+      <div class="mb-3 mt-3">
+        <label for="restaurant" class="form-label">Select Restaurant Owner</label>
+        <select
+          id="restaurant"
+          formControlName="restaurantOwner"
+          class="form-control"
+          (change)="getAllRestauranant($event)"
+        >
+          <option value="" disabled selected>Select a restaurant</option>
+          <option
+            *ngFor="let restaurant of restaurantOwner"
+            [value]="restaurant.id"
+          >
+          
+          {{ restaurant.id }}  {{ restaurant.firstName }} {{ restaurant.lastName }}  
+          </option>
+        </select>
+        <div
+          *ngIf="
+            createProductForm.get('restaurantOwner')?.invalid &&
+            createProductForm.get('restaurantOwner')?.touched
+          "
+          class="text-danger"
+        >
+          Please select a restaurant.
+        </div>
+      </div>
+      <div class="mb-3 mt-3">
+        <label for="restaurant" class="form-label">Select Restaurant</label>
+        <select
+          id="restaurant"
+          formControlName="restaurant"
+          class="form-control"
+        >
+          <option value="" disabled selected>Select a restaurant</option>
+          <option
+            *ngFor="let restaurant of restaurants"
+            [value]="restaurant.id"
+          >
+            {{ restaurant.restaurantName }}
+          </option>
+        </select>
+        <div
+          *ngIf="
+            createProductForm.get('restaurant')?.invalid &&
+            createProductForm.get('restaurant')?.touched
+          "
+          class="text-danger"
+        >
+          Please select a restaurant.
+        </div>
+      </div>
+  
+      <!-- Submit Button -->
+       <div class="text-center">
+        <button type="submit" class="btn btn mb-3 text-white" style="background-color: #f97821;" [disabled]="createProductForm.invalid">
+            Submit
+          </button>
+       </div>
+
+    </form>
+  </div>
+
+
+
+
+
+
+
+
+
+  <div class="container mt-5">
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-3">
+        <h4 class="text-nowrap mb-2 mb-md-0" style="color:#f97821">Orders</h4>
+        <div class="d-flex flex-wrap">
+            <button class="btn mb-2 mb-md-0" style="color:#f97821; border:1px solid #f97821">Export EXCEL</button>
+            <button class="btn ms-0 ms-md-2 text-white" style="background-color: #f97821;" routerLink="/admin/add-order">Add Order</button>
+        </div>
+    </div>
+
+    <div class="table-responsive mt-3">
+        <table class="table table-hover align-middle">
+            <thead class="table-light">
+                <tr>
+                    <th scope="col">Customer Name</th>
+                    <th scope="col">Phone Number</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Product Name</th>
+                    <th scope="col">Product Price</th>
+                    <th scope="col">Product Image</th>
+                    <th scope="col">Total Quantity</th>
+                    <th scope="col">Total Amount</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Iterate through each order -->
+                <tr *ngFor="let order of customers">
+                    <td>{{ order.customerName }}</td>
+                    <td>{{ order.customerphoneNumber }}</td>
+                    <td>{{ order.customerEmail }}</td>
+                    <!-- Nested iteration for order items -->
+                    <td>
+                        <ul class="list-unstyled">
+                            <li *ngFor="let item of order.orderItemIds">
+                                {{ item.productName }}
+                            </li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul class="list-unstyled">
+                            <li *ngFor="let item of order.orderItemIds">
+                                {{ item.productPrice | currency: 'INR' }}
+                            </li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul class="list-unstyled">
+                            <li *ngFor="let item of order.orderItemIds">
+                                <img [src]="envUrl + '/api/files/' + item.productImage" 
+                                     [alt]="item.productName" 
+                                     class="img-thumbnail" 
+                                     style="width: 50px; height: 50px;">
+                            </li>
+                        </ul>
+                    </td>
+                    <td>{{ order.totalQuantity }}</td>
+                    <td>{{ order.totalAmount | currency :"INR" }}</td>
+                    <td>
+                        <button class="btn" style="border: 1px solid grey; background-color: #f97821 !important; color: white;">Details</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Pagination Controls -->
+    <nav aria-label="Page navigation" class="mt-3">
+        <ul class="pagination justify-content-center flex-wrap">
+            <li class="page-item" [class.disabled]="currentPage === 0">
+                <button class="page-link" (click)="changePage(currentPage - 1)" style="color: #f97821;">Previous</button>
+            </li>
+            <li class="page-item" *ngFor="let page of pages; let i = index" [class.active]="i === currentPage">
+                <button class="page-link" (click)="changePage(i)" 
+                        [ngStyle]="{ 'background-color': i === currentPage ? '#f97821' : 'white', 'color': i === currentPage ? 'white' : '#f97821' }">
+                    {{ i + 1 }}
+                </button>
+            </li>
+            <li class="page-item" [class.disabled]="currentPage === totalPages - 1">
+                <button class="page-link" (click)="changePage(currentPage + 1)" style="color: #f97821;">Next</button>
+            </li>
+        </ul>
+    </nav>
+</div>

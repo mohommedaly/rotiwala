@@ -1,0 +1,44 @@
+.card {
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  
+  .card-header {
+    background-color: #ff5722;
+    color: #ffffff;
+  }
+  
+  .btn-outline-primary,
+  .btn-outline-danger {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+  
+  .list-group-item {
+    font-size: 15px;
+    background: #f9f9f9;
+    border: none;
+    padding: 12px 20px;
+  }
+  
+  .bg-header{
+    background-color: #f97821 !important;
+  }
+
+  .editbtn{
+    border:1px solid  #f97821;
+    background-color: #f97821;
+    color: white;
+  }
+  .editbtn:hover{
+    background-color:white ;
+    color:  #f97821;
+  }
+  .backBtn{
+    border:1px solid  #f97821;
+    color: #f97821;
+  }
+  .backBtn:hover{
+    background-color: #f97821;
+    color: white;
+  }

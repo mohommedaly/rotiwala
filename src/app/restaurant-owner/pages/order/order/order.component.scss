@@ -1,0 +1,20 @@
+.card {
+    border-radius: 8px;
+    transition: transform 0.3s;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px #f97821;
+  }
+  
+  .card-img-top {
+    height: 150px;
+    object-fit: cover !important;
+  }
+  .fixed-size-img {
+    height: 200px; /* Ya jitni height tum chahte ho */
+    width: 100%; /* Ensure karega ki image container ke width tak rahe */
+    object-fit: cover; /* Image ko container ke andar crop karke fit karega */
+    border-radius: 8px; /* Optional: card ke corners ko round kare */
+}

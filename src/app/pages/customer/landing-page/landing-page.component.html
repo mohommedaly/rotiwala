@@ -1,0 +1,53 @@
+<section style="background-color: white !important;">
+<div class="container-fluid mt-3 carsouleimg" style="background-color: white !important;">
+    <div class="row promo-section" style="background-color: white !important;">
+        <div class="col-md-7 p-0">
+            <img src="../../../../assets/mainroti.png" alt="Crispy Roties" class="promo-image">
+        </div>
+        <div class="col-md-5 promo-content ">
+            <h2 class="promo-title">Best deals <span class="promo-highlight">Crispy Roties</span></h2>
+            <p>Enjoy the large size of roties<br>Complete<br>100% whole wheat</p>
+            <a href="" class="promo-button">Proceed to order</a>
+        </div>
+    </div>
+</div>
+
+
+<!-- card start here -->
+
+
+
+<!-- <div class="container my-4 ani"> -->
+<div class="container my-4 ">
+    <div class="row">
+        <div class="col-lg-4 col-md-6 mb-4" *ngFor="let card of cards">
+            <div class="card card-custom" (click)="navigate(card?.id)">
+                <div class="card-image">
+                    <!-- Conditionally render the img tag only if there's a valid src -->
+                    <ng-container >
+                        <img [src]="envUrl  +card?.restaurantPhoto" alt="Dish Image" >
+                    </ng-container>
+                    <div class="badge-container">
+                        <span class="badge-custom">20% off</span>
+                        <span class="badge-custom">Fast</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ card?.restaurantName }}</h5>
+                    <div class="card-rating">
+                        <i class="bi bi-star-fill"></i> {{ card?.rating }}/100
+                    </div>
+                    <button class="btn btn-open">Open Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- card end here -->
+
+<div class="container-fluid promo-container mb-2">
+    <h1 class="promo-heading">Are you ready to order with the best deals?</h1>
+    <button class="btn promo-button">Order Now</button>
+</div>
+
+</section>

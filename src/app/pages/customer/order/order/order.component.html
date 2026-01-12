@@ -1,0 +1,202 @@
+<!-- 
+
+   <div class="container my-5">
+    <div class="card shadow-lg">
+      <div class="card-header text-center">
+        <h3>Order Form</h3>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
+          <div formArrayName="orders">
+            <div
+              class="card mb-3"
+              *ngFor="let order of orders.controls; let i = index"
+              [formGroupName]="i"
+            >
+              <div class="row g-3 align-items-center">
+              
+                <div class="col-md-2 text-center">
+                  <img
+                    [src]="envUrl + '/api/files/' + orderData[i].orderItemResponse.productImage"
+                    class="img-fluid rounded"
+                    alt="Product Image"
+                  />
+                </div>
+  
+                
+                <div class="col-md-10">
+                  <div class="row g-3">
+                  
+                    <div class="col-md-6">
+                      <label for="productName" class="form-label">Product Name</label>
+                      <input
+                        type="text"
+                        id="productName"
+                        class="form-control"
+                        formControlName="productName"
+                      />
+                    </div>
+  
+                 
+                    <div class="col-md-6">
+                      <label for="productPrice" class="form-label">Product Price</label>
+                      <input
+                        type="number"
+                        id="productPrice"
+                        class="form-control"
+                        formControlName="productPrice"
+                        [readonly]="true"
+                      />
+                    </div>
+  
+             
+                    <div class="col-md-6">
+                      <label for="quantity" class="form-label">Quantity</label>
+                      <input
+                        type="number"
+                        id="quantity"
+                        class="form-control"
+                        formControlName="quantity"
+                        (input)="onQuantityChange(i)"
+                        min="1"
+                      />
+                    </div>
+  
+                   
+                    <div class="col-md-6">
+                      <label for="totalAmount" class="form-label"> Amount</label>
+                      <input
+                        type="number"
+                        id="totalAmount"
+                        class="form-control"
+                        formControlName="totalAmount"
+                        [readonly]="true"
+                      />
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                        <label for="productName" class="form-label">Final Price</label>
+                      <input
+                        type="text"
+                        id="productName"
+                        class="form-control"
+                        formControlName="productName"
+                      />
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+      
+          <div class="text-center mt-4">
+            <button type="submit" class="btn btn-primary" [disabled]="orderForm.invalid">
+              Submit Orders
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+   -->
+
+
+   <div class="container my-5">
+    <div class="card shadow-lg">
+      <div class="card-header text-center">
+        <h3 style="color: #FC8019 !important;">Order Form</h3>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
+          <div formArrayName="orders">
+            <div
+              class="card mb-3"
+              *ngFor="let order of orders.controls; let i = index"
+              [formGroupName]="i"
+            >
+              <div class="row g-3 align-items-center">
+                <!-- Product Image -->
+                <div class="col-md-2 text-center">
+                  <img
+                    [src]="envUrl + '/api/files/' + orderData[i].orderItemResponse.productImage"
+                    class="img-fluid rounded"
+                    alt="Product Image"
+                  />
+                </div>
+  
+                <!-- Product Details -->
+                <div class="col-md-10">
+                  <div class="row g-3">
+                    <!-- Product Name -->
+                    <div class="col-md-6">
+                      <label for="productName" class="form-label">Product Name</label>
+                      <input
+                        type="text"
+                        id="productName"
+                        class="form-control"
+                        formControlName="productName"
+                        readonly
+                      />
+                    </div>
+  
+                    <!-- Product Price -->
+                    <div class="col-md-6">
+                      <label for="productPrice" class="form-label">Product Price</label>
+                      <input
+                        type="number"
+                        id="productPrice"
+                        class="form-control"
+                        formControlName="productPrice"
+                        readonly
+                      />
+                    </div>
+  
+                    <!-- Quantity -->
+                    <div class="col-md-6 mb-2">
+                      <label for="quantity" class="form-label">Quantity</label>
+                      <input
+                        type="number"
+                        id="quantity"
+                        class="form-control"
+                        formControlName="quantity"
+                        (input)="onQuantityChange(i)"
+                        min="1"
+                      />
+                    </div>
+  
+                    <!-- Total Amount -->
+                    <!-- <div class="col-md-6 mb-2">
+                      <label for="totalAmount" class="form-label">Total Amount</label>
+                      <input
+                        type="number"
+                        id="totalAmount"
+                        class="form-control"
+                        formControlName="totalAmount"
+                        readonly
+                      />
+                    </div> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Final Price -->
+          <div class="text-center mt-4">
+            <h5>Final Price: {{ finalPrice }}</h5>
+          </div>
+  
+          <!-- Submit Button -->
+          <div class="text-center mt-4">
+            <button type="submit" class="btn btn-primary" style="background-color: #FC8019;" [disabled]="orderForm.invalid">
+              Submit Orders
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  

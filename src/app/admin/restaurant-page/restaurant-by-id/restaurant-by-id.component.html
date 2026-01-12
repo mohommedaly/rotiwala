@@ -1,0 +1,100 @@
+
+   <div class="container my-4">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6">
+        <div class="card shadow-lg">
+          <div class="card-header text-center text-white bg-header">
+            <h4>Restaurant Owner Details</h4>
+          </div>
+          <div class="card-footer text-end">
+            <button class="btn btn-sm text-center mx-2 backBtn" routerLink="/admin/all-restaurant-owner">Back</button>
+            <button class="btn btn-sm mx-2 editbtn">Edit</button>
+          </div>
+          <div class="card-body p-4">
+            <div class="text-center mb-4">
+              <img [src]="envUrl+ownerData?.restaurantPhoto" alt="Profile Picture" class="rounded-circle profile-pic" />
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                          <strong> ID:</strong> {{ ownerData?.id }}
+                        </li>
+                        <li class="list-group-item">
+                          <strong>  Name:</strong> {{ ownerData?.restaurantName }} 
+                        </li>
+                        <li class="list-group-item">
+                          <strong> Type:</strong> {{ ownerData?.restaurantType }}
+                        </li>
+                        <li class="list-group-item">
+                          <strong>  Phone Number:</strong> {{ ownerData?.restaurantMobileNumber }}
+                        </li>
+                        <li class="list-group-item">
+                          <strong> Address:</strong> {{ ownerData?.restaurantAddress }}
+                        </li>
+                        <li class="list-group-item">
+                          <strong> GST Number:</strong> {{ ownerData?.gstNumber }}
+                        </li>
+                        <li class="list-group-item">
+                          <strong> FSSAI Number:</strong> {{ ownerData?.fssaiNumber }}
+                        </li>
+                        <!-- <li class="list-group-item text-center">
+                          <div class="id-images">
+                           
+                           
+                          </div>
+                        </li> -->
+                      </ul>
+                </div>
+                <div class="col-md-6">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                          <strong>Gomasta Number:</strong> {{ ownerData?.gomastaNo }}
+                        </li>
+                        <li class="list-group-item">
+                          <strong>Open Days:</strong> {{ ownerData?.openDays }} 
+                        </li>
+                        <li class="list-group-item">
+                          <strong>Open Time:</strong> {{ ownerData?.openTime  | date: 'shortTime'}}
+                        </li>
+                        <li class="list-group-item">
+                          <strong>Close Day:</strong> {{ ownerData?.closeDays }}
+                        </li>
+                        <li class="list-group-item">
+                          <strong>Close Time:</strong> {{ ownerData?.closeTime | date: 'shortTime' }}
+                        </li>
+                        <li class="list-group-item">
+                          <strong>Created At:</strong> {{ ownerData?.createdAt }}
+                        </li>
+                        <li class="list-group-item">
+                          <!-- <strong>Created At:</strong> {{ ownerData?.createdAt }} -->
+                        </li>
+                        <li class="list-group-item">
+                          <!-- <strong>Created At:</strong> {{ ownerData?.createdAt }} -->
+                        </li>
+                     
+                      </ul>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-6">
+                    <div class="id-image">
+                        <img [src]="envUrl+ownerData?.gstDocumentImage" alt="GST Card Photo" class="img-thumbnail" />
+                        <p>GST Card</p>
+                      </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="id-image">
+                        <img [src]="envUrl+ownerData?.fssaiDocumentImage" alt="FSSAI Card Photo" class="img-thumbnail" />
+                        <p>FSSAI Card</p>
+                      </div>
+                </div>
+            </div>
+           
+          </div>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+  

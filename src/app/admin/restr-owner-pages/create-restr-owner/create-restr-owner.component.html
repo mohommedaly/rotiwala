@@ -1,0 +1,93 @@
+<div class="d-flex justify-content-end ms-5 mb-3"  style="margin-right: 80px !important;"  routerLink="/admin/restaurant-owner">
+  <button class="btn btn-sm text-white"  style="background-color: #f97821;">back</button>
+</div>
+<div class="container mt-2 mb-3">
+    <div class="card p-4 border-orange" style="max-width: 600px; margin: auto;">
+      <h3 class="text-orange mb-4 text-center">Owner Information</h3>
+      <form [formGroup]="ownerForm" (ngSubmit)="onSubmit()">
+  
+        <!-- First Name and Last Name -->
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="firstName" class="form-label">First Name</label>
+            <input type="text" id="firstName" class="form-control" formControlName="firstName" placeholder="Enter first name">
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input type="text" id="lastName" class="form-control" formControlName="lastName" placeholder="Enter last name">
+          </div>
+        </div>
+  
+        <!-- Mobile Number and Email -->
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="mobileNumber" class="form-label">Mobile Number</label>
+            <input type="text" maxlength="10" id="mobileNumber" class="form-control" formControlName="mobileNumber" placeholder="Enter mobile number">
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" id="email" class="form-control" formControlName="email" placeholder="Enter email">
+          </div>
+        </div>
+  
+        <!-- Aadhar Number and PAN Number -->
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="aadharNumber" class="form-label">Aadhar Number</label>
+            <input type="text" maxlength="12" id="aadharNumber" class="form-control" formControlName="aadharNumber" placeholder="Enter Aadhar number">
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="panNo" class="form-label">PAN Number</label>
+            <input type="text" maxlength="10" id="panNo" class="form-control" formControlName="panNo" placeholder="Enter PAN number">
+          </div>
+        </div>
+  
+        <!-- Image Uploads with Preview -->
+        <div class="mb-3">
+          <label for="profilePhoto" class="form-label">Address</label>
+          <textarea id="profilePhoto" class="form-control" placeholder="Enter Address" formControlName="address" rows="4"></textarea>
+          
+        </div>
+        
+        <div class="mb-3">
+          <label for="profilePhoto" class="form-label">Profile Photo</label>
+          <input type="file" id="profilePhoto" class="form-control" (change)="onFileChange($event, 'profilePhoto')">
+          <div *ngIf="profilePhotoPreview" class="mt-2">
+            <img [src]="profilePhotoPreview" alt="Profile Preview" class="img-thumbnail" style="max-width: 100px;">
+          </div>
+        </div>
+  
+        <div class="mb-3">
+          <label for="aadharImage" class="form-label">Aadhar Image</label>
+          <input type="file" id="aadharImage" class="form-control" (change)="onFileChange($event, 'aadharImage')">
+          <div *ngIf="aadharImagePreview" class="mt-2">
+            <img [src]="aadharImagePreview" alt="Aadhar Preview" class="img-thumbnail" style="max-width: 100px;">
+          </div>
+        </div>
+  
+        <div class="mb-3">
+          <label for="panImage" class="form-label">PAN Image</label>
+          <input type="file" id="panImage" class="form-control" (change)="onFileChange($event, 'panImage')">
+          <div *ngIf="panImagePreview" class="mt-2">
+            <img [src]="panImagePreview" alt="PAN Preview" class="img-thumbnail" style="max-width: 100px;">
+          </div>
+        </div>
+  
+        <!-- Submit Button -->
+        <!-- <button type="submit" class="btn btn-orange w-100">Submit</button> -->
+
+        <button
+type="submit"
+class="w-100 btn btn-block text-white mt-4"
+[disabled]="ownerForm.invalid || isLoading"
+style="background-color: #ff6600; font-family: 'Poppins', sans-serif;"
+>
+<span *ngIf="!isLoading">Submit</span>
+<span *ngIf="isLoading">
+  <i class="fa fa-spinner fa-spin"></i> Loading  in...
+</span>
+</button>
+      </form>
+    </div>
+  </div>
+  

@@ -1,0 +1,64 @@
+<section class="d-flex justify-content-center align-items-center min-vh-100 pt-5">
+  <div class="container-fluid">
+    <div class="row justify-content-center mb-5">
+      <div class="col-12">
+        <h1 class="logo text-white" style="font-family: 'Poppins', sans-serif;">LOGO/Title</h1>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-lg-4">
+        <div class="card p-4 shadow-lg">
+          <div class="card-body">
+            <h3 class="text-center" style="font-family: 'Poppins', sans-serif;">Register</h3>
+
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+              <!-- Username Field -->
+              <div class="form-group mt-3">
+                <label for="email" style="font-family: 'Poppins', sans-serif;">Username</label>
+                <input type="text" id="username" formControlName="email" class="form-control"
+                  placeholder="Enter your username" [ngClass]="{'is-invalid': isInvalid('email')}">
+                <div *ngIf="isInvalid('email')" class="invalid-feedback">
+                  {{ getErrorMessage('email') }}
+                </div>
+              </div>
+
+              <!-- OTP Field -->
+              <div class="form-group mt-2 position-relative">
+                <label for="otp" style="font-family: 'Poppins', sans-serif;">OTP</label>
+                <input [type]="showOtpPassword ? 'text' : 'password'" id="otp" formControlName="otp" class="form-control"
+                  placeholder="Enter your OTP" [ngClass]="{'is-invalid': isInvalid('otp')}">
+                <i class="fa" [ngClass]="showOtpPassword ? 'fa-eye-slash' : 'fa-eye'" (click)="toggleOtpVisibility()"
+                   style="position: absolute; right: 10px; top: 38px; cursor: pointer; color: #ff6600;"></i>
+                <div *ngIf="isInvalid('otp')" class="invalid-feedback">
+                  {{ getErrorMessage('otp') }}
+                </div>
+              </div>
+
+              <!-- Password Field -->
+              <div class="form-group mt-2 position-relative">
+                <label for="password" style="font-family: 'Poppins', sans-serif;">Password</label>
+                <input [type]="showPassword ? 'text' : 'password'" id="password" formControlName="newPassword" class="form-control"
+                  placeholder="Enter your password" [ngClass]="{'is-invalid': isInvalid('newPassword')}">
+                <i class="fa" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'" (click)="togglePasswordVisibility()"
+                   style="position: absolute; right: 10px; top: 38px; cursor: pointer; color: #ff6600;"></i>
+                <div *ngIf="isInvalid('newPassword')" class="invalid-feedback">
+                  {{ getErrorMessage('newPassword') }}
+                </div>
+              </div>
+
+              <!-- Submit Button -->
+              <button type="submit" class="w-100 btn btn-block text-white mt-4" [disabled]="loginForm.invalid"
+                style="background-color: #ff6600; font-family: 'Poppins', sans-serif;">Register</button>
+            </form>
+
+            <!-- Sign In Link -->
+            <div class="text-center mt-3" style="font-family: 'Poppins', sans-serif;">
+              <p>Already have an account? <a routerLink="/auth" style="color: #ff6600;">Sign in</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

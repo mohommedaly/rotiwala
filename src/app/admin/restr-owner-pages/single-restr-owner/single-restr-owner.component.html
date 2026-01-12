@@ -1,0 +1,99 @@
+<!-- <div class="container my-4">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card shadow-lg">
+          <div class="card-header text-center  text-white  bg-header">
+            <h4>Restaurant Owner Details</h4>
+          </div>
+          <div class="card-footer text-end mt-1">
+            <button class="btn btn-sm text-center mx-2 backBtn"  routerLink="/admin/all-customer" >Back</button>
+            <button class="btn  btn-sm mx-2 editbtn   justify-item-center" >Edit</button>
+            
+          </div>
+          <div class="card-body p-4">
+            <div class="text-center mb-4">
+              <img [src]="ownerData?.profilePicture" alt="Profile Picture" class="rounded-circle" style="width: 120px; height: 120px;" />
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <strong>Restaurant  ID:</strong> {{ ownerData?.id }}
+              </li>
+              <li class="list-group-item">
+                <strong>Restaurant Owner Name:</strong> {{ ownerData?.firstName }} {{ ownerData?.lastName }}
+              </li>
+              <li class="list-group-item">
+                <strong>Restaurant Owner Email:</strong> {{ ownerData?.email }}
+              </li>
+              <li class="list-group-item">
+                <strong> Restaurant Owner Phone Number:</strong> {{ ownerData?.mobileNumber }}
+              </li>
+              <li class="list-group-item">
+                <strong> Restaurant Owner Adhar Number:</strong> {{ ownerData?.aadharNumber }}
+              </li>
+              <li class="list-group-item">
+                <strong> Restaurant Owner Pan Number:</strong> {{ ownerData?.panNo }}
+              </li>
+          
+            </ul>
+          </div>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+   -->
+
+   <div class="container my-4">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6">
+        <div class="card shadow-lg">
+          <div class="card-header text-center text-white bg-header">
+            <h4>Restaurant Owner Details</h4>
+          </div>
+          <div class="card-footer text-end">
+            <button class="btn btn-sm text-center mx-2 backBtn" routerLink="/admin/all-restaurant-owner">Back</button>
+            <button class="btn btn-sm mx-2 editbtn">Edit</button>
+          </div>
+          <div class="card-body p-4">
+            <div class="text-center mb-4">
+              <img [src]="envUrl+ownerData?.profilePicture" alt="Profile Picture" class="rounded-circle profile-pic" />
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <strong>Restaurant ID:</strong> {{ ownerData?.id }}
+              </li>
+              <li class="list-group-item">
+                <strong>Restaurant Owner Name:</strong> {{ ownerData?.firstName }} {{ ownerData?.lastName }}
+              </li>
+              <li class="list-group-item">
+                <strong>Restaurant Owner Email:</strong> {{ ownerData?.email }}
+              </li>
+              <li class="list-group-item">
+                <strong>Restaurant Owner Phone Number:</strong> {{ ownerData?.mobileNumber }}
+              </li>
+              <li class="list-group-item">
+                <strong>Restaurant Owner Aadhar Number:</strong> {{ ownerData?.aadharNumber }}
+              </li>
+              <li class="list-group-item">
+                <strong>Restaurant Owner Pan Number:</strong> {{ ownerData?.panNo }}
+              </li>
+              <li class="list-group-item text-center">
+                <div class="id-images">
+                  <div class="id-image">
+                    <img [src]="envUrl+ownerData?.aadharImage" alt="Aadhar Card Photo" class="img-thumbnail" />
+                    <p>Aadhar Card</p>
+                  </div>
+                  <div class="id-image">
+                    <img [src]="envUrl+ownerData?.panImage" alt="PAN Card Photo" class="img-thumbnail" />
+                    <p>PAN Card</p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+  

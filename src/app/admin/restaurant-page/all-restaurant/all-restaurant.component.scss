@@ -1,0 +1,35 @@
+.table-responsive {
+    overflow-x: auto;
+}
+
+.table td,
+.table th {
+    white-space: nowrap;
+}
+
+.text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.pagination .page-link {
+    border: 1px solid #f97821;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #f97821;
+    border-color: #f97821;
+    color: white;
+}
+
+.pagination .page-link:hover {
+    background-color: #f97821;
+    color: white;
+}
+
+button:focus, li:focus, nav:focus {
+    outline: none !important;
+    border-color: #f97821 !important;
+    box-shadow: 0 0 5px #f97821 !important;
+}

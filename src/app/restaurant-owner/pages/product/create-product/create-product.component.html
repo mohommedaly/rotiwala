@@ -1,0 +1,63 @@
+<div class="d-flex justify-content-end    mb-3" style="margin-right: 85px !important;"  routerLink="/restaurant-owner/product">
+  <button class="btn btn-sm text-white"  style="background-color: #f97821;">back</button>
+</div>
+
+
+<div class="container p-4 mb-3" style="max-width: 600px; border: 1px solid #f97821; border-radius: 8px;">
+    <h3 style="color: #f97821;">Add New Product</h3>
+    <form [formGroup]="createProductForm" (ngSubmit)="onSubmit()">
+      <!-- Product Name -->
+      <div class="mb-3">
+        <label for="productName" class="form-label">Product Name</label>
+        <input type="text" id="productName" formControlName="productName" class="form-control" />
+        <div *ngIf="createProductForm.get('productName')?.invalid && createProductForm.get('productName')?.touched" class="text-danger">
+          Product name is required and must be at least 3 characters.
+        </div>
+      </div>
+  
+      <!-- Product Price -->
+      <div class="mb-3">
+        <label for="productPrice" class="form-label">Product Price</label>
+        <input type="number" id="productPrice" formControlName="productPrice" class="form-control" />
+        <div *ngIf="createProductForm.get('productPrice')?.invalid && createProductForm.get('productPrice')?.touched" class="text-danger">
+          Product price is required and must be a positive number.
+        </div>
+      </div>
+  
+      <!-- Restaurant Dropdown -->
+      <div class="mb-3">
+        <label for="restaurant" class="form-label">Select Restaurant</label>
+        <select id="restaurant" formControlName="restaurant" class="form-control">
+          <option value="" disabled selected>Select a restaurant</option>
+          <option *ngFor="let restaurant of restaurants" [value]="restaurant.id">
+            {{ restaurant.restaurantName }}
+          </option>
+        </select>
+        <div *ngIf="createProductForm.get('restaurant')?.invalid && createProductForm.get('restaurant')?.touched" class="text-danger">
+          Please select a restaurant.
+        </div>
+      </div>
+  
+      <!-- Product Image -->
+      <div class="mb-3">
+        <label for="productImage" class="form-label">Product Image</label>
+        <input type="file" id="productImage" (change)="onFileChange($event)" class="form-control" accept="image/*" />
+        <div *ngIf="createProductForm.get('productImage')?.invalid && createProductForm.get('productImage')?.touched" class="text-danger">
+          Product image is required.
+        </div>
+      </div>
+  
+      <!-- Image Preview -->
+      <div *ngIf="productImagePreview" class="mb-3">
+        <!-- <label class="form-label">Image Preview:</label> -->
+        <img [src]="productImagePreview" alt="Product Preview" style="max-width: 100px; border: 1px solid #ccc;" />
+      </div>
+  
+      <!-- Submit and Reset Buttons -->
+      <button type="submit" class="btn" [ngStyle]="{ 'background-color': '#f97821', color: '#fff' }" [disabled]="createProductForm.invalid">
+        Add Product
+      </button>
+      <!-- <button type="button" class="btn btn-secondary ms-3" (click)="onReset()">Reset</button> -->
+    </form>
+  </div>
+  

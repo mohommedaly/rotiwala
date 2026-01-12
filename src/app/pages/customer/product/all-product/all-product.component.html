@@ -1,0 +1,145 @@
+<div class="container-fluid mt-2">
+    <div class="row">
+      <div class="col-12">
+        <div class="image-container">
+          <img src="../../../../../assets/banner.jpg" alt="Restaurant">
+          <div class="overlay-text">
+            <p>Save up to <strong>32%</strong></p>
+            <h2 class="mb-2">Restaurant</h2>
+            <a href="#" class="btn btn-shop-now">Shop Now ➔</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- 
+  <div class="container-fluid my-5">
+    <h2>Popular Categories</h2>
+    <div class="row">
+  
+      <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+        <div class="card">
+          <div class="sale-badge">Sale 50%</div>
+          <img src="../../../../../assets/mainroti.png" class="card-img-top" alt="Dish name">
+          <div class="overlay-icons">
+            <button class="btn btn-light"><i class="fas fa-heart"></i></button>
+            <button class="btn btn-light mt-2"><i class="fas fa-shopping-cart"></i></button>
+          </div>
+          <div class="product-info">
+            <h5>Dish name</h5>
+            <div class="price">$14.99</div>
+            <div class="rating">
+                <ng-container *ngFor="let star of stars">
+                  <i *ngIf="star === 'full'" class="fas fa-star"></i>
+                  <i *ngIf="star === 'half'" class="fas fa-star-half-alt"></i>
+                  <i *ngIf="star === 'empty'" class="far fa-star"></i>
+                </ng-container>
+              </div>
+              
+         
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+        <div class="card">
+          <img src="../../../../../assets/mainroti.png" class="card-img-top" alt="Dish name">
+          <div class="overlay-icons">
+            <button class="btn btn-light"><i class="fas fa-heart"></i></button>
+            <button class="btn btn-light mt-2"><i class="fas fa-shopping-cart"></i></button>
+          </div>
+          <div class="product-info">
+            <h5>Dish name</h5>
+            <div class="price">$14.99</div>
+            <div class="rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </div>
+         
+          </div>
+        </div>
+      </div>
+ 
+      <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+        <div class="card">
+          <img src="../../../../../assets/mainroti.png" class="card-img-top" alt="Dish name">
+          <div class="overlay-icons">
+            <button class="btn btn-light"><i class="fas fa-heart"></i></button>
+            <button class="btn btn-light mt-2"><i class="fas fa-shopping-cart"></i></button>
+          </div>
+          <div class="product-info">
+            <h5>Dish name</h5>
+            <div class="price">$14.99</div>
+            <div class="rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </div>
+         
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+        <div class="card">
+          <img src="../../../../../assets/mainroti.png" class="card-img-top" alt="Dish name">
+          <div class="overlay-icons">
+            <button class="btn btn-light"><i class="fas fa-heart"></i></button>
+            <button class="btn btn-light mt-2"><i class="fas fa-shopping-cart"></i></button>
+          </div>
+          <div class="product-info">
+            <h5>Dish name</h5>
+            <div class="price">$14.99</div>
+            <div class="rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </div>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+
+  <div class="container-fluid my-5">
+    <h2>Popular Categories</h2>
+    <div class="row">
+      <div class="col-lg-3 col-md-6 col-sm-12 mb-4" *ngFor="let product of products">
+        <div class="card">
+          <div *ngIf="product.isDeleted" class="sale-badge">Unavailable</div>
+          <img
+            [src]="envUrl+'/api/files/'+product?.productImage"
+            class="card-img-top"
+            alt="{{ product?.productName }}"
+           
+          />
+          <div class="overlay-icons">
+            <button class="btn btn-light"><i class="fas fa-heart"></i></button>
+            <button (click)="getProductId(product?.id)" class="btn btn-light mt-2"><i class="fas fa-shopping-cart"></i></button>
+          </div>
+          <div class="product-info">
+            <h5>{{ product?.productName }}</h5>
+            <div class="price">{{ product?.productPrice | currency :"INR" }}</div>
+            <div class="rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
